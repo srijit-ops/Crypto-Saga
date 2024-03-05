@@ -8,6 +8,7 @@ import { useState } from 'react'
 import Layout from './components/layout/Layout'
 import KoinxAd from "./components/KoinxAd";
 import theme from "../theme";
+import TrendingCoins from "./components/TrendingCoins";
 
 export default function App() {
 
@@ -26,6 +27,7 @@ export default function App() {
           <div css={parent_widget1}>hii</div>
           <div css={parent_widget2}>
             <KoinxAd/>
+            <TrendingCoins/>
           </div>
           <div css={parent_widget3}>hola</div>
         </div>
