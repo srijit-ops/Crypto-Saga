@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 import { useState, React } from 'react'
 
 //components
-
+import Pricechart from "./Pricechart";
 
 import theme from "../../theme";
 
@@ -34,6 +34,8 @@ export default function Overview({priceDetails}) {
                     <p>(24 H)</p>
                 </div>
             </div>
+
+            <Pricechart/>
         </div>
     )
 }
