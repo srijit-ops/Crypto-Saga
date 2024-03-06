@@ -11,6 +11,7 @@ import theme from "../theme";
 import TrendingCoins from "./components/TrendingCoins";
 import Overview from "./components/Overview";
 import Performance from "./components/Performance";
+import Sentiment from "./components/Sentiment";
 
 //apis
 
@@ -83,6 +84,7 @@ useEffect(()=>{
           <div css={parent_widget1}>
             <Overview priceDetails={priceDetails}/>
             <Performance/>
+            <Sentiment/>
           </div>
           <div css={parent_widget2}>
             <KoinxAd/>

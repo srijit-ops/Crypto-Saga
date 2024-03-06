@@ -152,6 +152,7 @@ const heading= css`
     color: #44475B;
     font-size: 1.2rem;
     font-weight: 600;
+    
 `
 const head_holder= css`
     display: flex;
@@ -159,6 +160,7 @@ const head_holder= css`
     align-items: center;
     flex-direction: row;
     gap:0.5rem;
+    margin-top: 3rem;
 `
 const subcontainer= css`
     display: flex;

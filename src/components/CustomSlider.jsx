@@ -22,11 +22,11 @@ export default function CustomSlider({ max, min, current, leftLabel, rightLabel 
         <p css={label}>{leftLabel}</p>
         <p css={value}>${min}</p>
       </div>
-      <div css={bar}>
-        <div css= {indicator} style={{ left: `${currenctPercentage}%` }}>
+      <div css= {indicator} style={{ left: `${currenctPercentage}%` }}>
           <p css={arrow}>&#10094;</p>
           <p css={value}>${current}</p>
         </div>
+      <div css={bar}>
       </div>
       <div css={right}>
         <p css={label}>{rightLabel}</p>
@@ -44,16 +44,17 @@ const indicator= css`
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    align-items: flex-start;
-    top: 100%;
+    align-items: center;
+    top: 45%;
 `
 const outer= css`
-    padding: 16px;
+overflow-y: hidden;
+    padding: 1rem;
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 1rem;
 `
 const bar = css`
     background: rgb(255, 0, 0);
@@ -63,9 +64,9 @@ const bar = css`
       rgba(255, 241, 0, 1) 49%,
       rgba(0, 255, 81, 1) 100%
     );
-    height: 10px;
+    height: 0.7rem;
     width: 100%;
-    border-radius: 6px;
+    border-radius: 0.4rem;
     position: relative;
 `
     const left= css`
