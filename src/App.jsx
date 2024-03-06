@@ -16,6 +16,7 @@ import Performance from "./components/Performance";
 
 import getTrendingCoinsAPI from "./api/getTrendingCoinsAPI";
 import getBitcoinPriceAPI from "./api/getBitcoinPriceAPI";
+import Recommendation from "./components/Recommendation";
 
 
 export default function App() {
@@ -87,7 +88,9 @@ useEffect(()=>{
             <KoinxAd/>
             <TrendingCoins trendingCoins={trendingCoins}/>
           </div>
-          <div css={parent_widget3}>hola</div>
+          <div css={parent_widget3}>
+            <Recommendation trendingCoins={trendingCoins}/>
+          </div>
         </div>
       </div>
     </Layout>
@@ -151,6 +154,7 @@ order: 2;
     }
 `
 const parent_widget3 = css`
+overflow-x: auto;
   width: 100%;
 order: 3;
   @media screen and (max-width: 900px) {

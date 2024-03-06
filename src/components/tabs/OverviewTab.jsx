@@ -7,6 +7,7 @@ import { useState, React } from 'react'
 
 
 import theme from "../../../theme";
+import CustomSlider from "../CustomSlider";
 
 function OverviewTab() {
 
@@ -61,6 +62,8 @@ function OverviewTab() {
   return (
     <div css={content}>
         <h4 css={main_head}>Performance</h4>
+        <CustomSlider max={49343} min={46930} current={48690} leftLabel={"Today;s low"} rightLabel={"todays high"}/>
+        <CustomSlider max={45000} min={40000} current={42000} leftLabel={"50w low"} rightLabel={"50w high"}/>
         <div css={head_holder}>
         <p css={heading}>Fundamentals</p>
         <img src="/info.svg" alt="info" css={info}/>
@@ -180,4 +183,6 @@ const content= css`
     padding-bottom: 2.5rem;
     margin-top: 1.3rem;
     border-radius: 0.5rem;
+    position: relative;
+    z-index: 1;
 `
