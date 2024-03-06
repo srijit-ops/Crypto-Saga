@@ -9,6 +9,47 @@ import Pricechart from "./Pricechart";
 import theme from "../../theme";
 
 export default function Overview({priceDetails}) {
+
+    //states
+
+    const [range, setRange] = useState("YTD")
+
+    const chartTime = [
+        {
+            name: "1H",
+            value:"1D"
+        },
+        {
+            name: "24H",
+            value:"5D"
+        },
+        {
+            name: "7D",
+            value:"YTD"
+        },
+        {
+            name: "1M",
+            value:""
+        },
+        {
+            name: "3M",
+            value:"3M"
+        },
+        {
+            name: "6M",
+            value:"6M"
+        },
+        {
+            name: "1Y",
+            value:"12M"
+        },
+        {
+            name: "All",
+            value:"All"
+        }
+    ]
+
+
     return (
         <div css= {overview_container}>
             <div css={coin_info}>
@@ -35,7 +76,20 @@ export default function Overview({priceDetails}) {
                 </div>
             </div>
 
-            <Pricechart/>
+            <div css={chart_info}>
+                <p css={chart_name}>Bitcoin price chart (USD)</p>
+                <div css={time_holder}>
+                    {
+                        chartTime.map((data, index)=>{
+                            return(
+                                <button key={index} css={time} onClick={()=>setRange(data.value)}>{data.name}</button>
+                            )
+                        })
+                    }
+                    
+                </div>
+            </div>
+            <Pricechart range={range}/>
         </div>
     )
 }
@@ -132,4 +186,43 @@ const rate_holder= css`
     align-items: center;
     flex-direction: row;
     gap:0.4rem;
+`
+const chart_info= css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: row;
+    /* width: 30%; */
+    margin-top: 1%.5;
+    margin-bottom: 1.5rem;
+    border-top: 0.1rem solid #DEE1E6;
+    padding-top: 1rem;
+    /* padding-bottom: 1.5rem; */
+`
+const chart_name= css`
+width: 20%;
+    font-size: 1rem;
+    font-weight: 600;
+    color: ${theme.secondary_color};
+   
+`
+const time_holder= css`
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.2rem;
+    flex-direction:row;
+`
+const time= css`
+    color: #5D667B;
+    font-size:0.7rem;
+    padding: 0.3rem;
+    border-radius: 2rem;
+    background-color: white;
+    :focus{
+        color: #0141CF;
+        background-color: #E2ECFE;
+    }
 `
