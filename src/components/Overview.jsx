@@ -2,15 +2,27 @@
 import { css } from "@emotion/react";
 
 import { useState, React } from 'react'
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios"
 
 //components
 import Pricechart from "./Pricechart";
 
 import theme from "../../theme";
 
-export default function Overview({priceDetails}) {
+export default function Overview() {
 
     //states
+    const priceDetails= ()=>{
+        return axios.get(
+            'https://api.coingecko.com/api/v3/simple/price',
+            {
+                ids: 'bitcoin',
+    vs_currencies: 'inr,usd',
+    include_24hr_change: true
+            }
+        )
+    }
 
     const [range, setRange] = useState("YTD")
 
@@ -49,8 +61,17 @@ export default function Overview({priceDetails}) {
         }
     ]
 
+    //fetching price details
+
+    const {isLoading, data}= useQuery({queryKey:'price-details'}, priceDetails)
+
+
 
     return (
+        
+            isLoading ? 
+            <Text>loading</Text>
+            :
         <div css= {overview_container}>
             <div css={coin_info}>
                 <div css={coin_holder}>
@@ -64,13 +85,13 @@ export default function Overview({priceDetails}) {
             </div>
             <div css={price_details}>
                 <div css={inr_usd}>
-                    <h4 css={usd_price}>$ {priceDetails.usd}</h4>
-                    <p css={inr_price}>Rs. {priceDetails.inr}</p>
+                    <h4 css={usd_price}>$ {data.usd}</h4>
+                    <p css={inr_price}>Rs. {data.inr}</p>
                 </div>
                 <div css={rate_holder}>
                     <div css={subpart2}>
                         <img src="/arrow-up.png" alt="arrow" css={arrow} />
-                        <p css={rate}>{priceDetails.usd_24h_change && priceDetails.usd_24h_change.toFixed(2)} %</p>
+                        <p css={rate}>{data.usd_24h_change && data.usd_24h_change.toFixed(2)} %</p>
                     </div>
                     <p>(24 H)</p>
                 </div>

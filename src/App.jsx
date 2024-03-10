@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 
 import { useState, useEffect } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 //components
 
@@ -15,8 +16,8 @@ import Sentiment from "./components/Sentiment";
 
 //apis
 
-import getTrendingCoinsAPI from "./api/getTrendingCoinsAPI";
-import getBitcoinPriceAPI from "./api/getBitcoinPriceAPI";
+// import getTrendingCoinsAPI from "./api/getTrendingCoinsAPI";
+// import getBitcoinPriceAPI from "./api/getBitcoinPriceAPI";
 import Recommendation from "./components/Recommendation";
 
 
@@ -25,52 +26,57 @@ export default function App() {
   //states
   const [loading, setloading] = useState(true)
   const [trendingCoins, settrendingCoins] = useState([])
-  const [priceDetails, setpriceDetails] = useState([])
+  // const [priceDetails, setpriceDetails] = useState([])
+
+  const queryClient= new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: Infinity,
+      },
+    },
+  })
 
 
-  const fetchTrendyCoin= async ()=>{
+//   const fetchTrendyCoin= async ()=>{
     
-      let res= await getTrendingCoinsAPI()
-      if(res.status===200){
-        settrendingCoins(res.data.coins)
-      }
-      console.log("error from trending coins api")
+//       let res= await getTrendingCoinsAPI()
+//       if(res.status===200){
+//         settrendingCoins(res.data.coins)
+//       }
+//       console.log("error from trending coins api")
     
-  }
+//   }
 
-  const fetchBitcoinPrice= async()=>{
-    let res= await getBitcoinPriceAPI()
-    if(res.status===200){
-      setpriceDetails(res.data.bitcoin)
-    }
-    console.log("error from price details api")
-  }
+//   const fetchBitcoinPrice= async()=>{
+//     let res= await getBitcoinPriceAPI()
+//     if(res.status===200){
+//       setpriceDetails(res.data.bitcoin)
+//     }
+//     console.log("error from price details api")
+//   }
 
-useEffect(()=>{
-  setloading(true)
-  try{
-    fetchTrendyCoin()
-    fetchBitcoinPrice()
-    if(trendingCoins && priceDetails){
-      setloading(false)
-    }
-  }
-  catch(e){
-    setloading(false)
-    console.log(e)
-  }
+// useEffect(()=>{
+//   setloading(true)
+//   try{
+//     fetchTrendyCoin()
+//     fetchBitcoinPrice()
+//     if(trendingCoins && priceDetails){
+//       setloading(false)
+//     }
+//   }
+//   catch(e){
+//     setloading(false)
+//     console.log(e)
+//   }
   
-}
-,[]
-)
+// }
+// ,[]
+// )
 
 
   return (
+    <QueryClientProvider client= {queryClient}>
     <>
-    {
-      loading ? 
-      <p>loading</p>
-      :
       <Layout>
       <div css={container}>
 
@@ -82,7 +88,7 @@ useEffect(()=>{
 
         <div css={widgets_holder}>
           <div css={parent_widget1}>
-            <Overview priceDetails={priceDetails}/>
+            <Overview/>
             <Performance/>
             <Sentiment/>
           </div>
@@ -96,9 +102,8 @@ useEffect(()=>{
         </div>
       </div>
     </Layout>
-    }
     </>
-    
+    </QueryClientProvider>
     
   )
 }
