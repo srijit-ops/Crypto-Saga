@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 
 import { useState, useEffect } from 'react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 
 //components
 
@@ -13,6 +13,7 @@ import TrendingCoins from "./components/TrendingCoins";
 import Overview from "./components/Overview";
 import Performance from "./components/Performance";
 import Sentiment from "./components/Sentiment";
+import LivePrice from "./pages/LivePrice/LivePrice";
 
 //apis
 
@@ -24,17 +25,10 @@ import Recommendation from "./components/Recommendation";
 export default function App() {
 
   //states
-  const [loading, setloading] = useState(true)
   const [trendingCoins, settrendingCoins] = useState([])
   // const [priceDetails, setpriceDetails] = useState([])
 
-  const queryClient= new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: Infinity,
-      },
-    },
-  })
+  
 
 
 //   const fetchTrendyCoin= async ()=>{
@@ -75,7 +69,7 @@ export default function App() {
 
 
   return (
-    <QueryClientProvider client= {queryClient}>
+    
     <>
       <Layout>
       <div css={container}>
@@ -90,7 +84,7 @@ export default function App() {
           <div css={parent_widget1}>
             <Overview/>
             <Performance/>
-            <Sentiment/>
+            {/* <Sentiment/> */}
           </div>
           <div css={parent_widget2}>
             <KoinxAd/>
@@ -103,7 +97,7 @@ export default function App() {
       </div>
     </Layout>
     </>
-    </QueryClientProvider>
+    
     
   )
 }
