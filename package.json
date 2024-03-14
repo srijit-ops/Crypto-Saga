@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
     "@tanstack/react-query": "^5.25.0",
     "axios": "^1.6.7",
     "rc-progress": "^3.5.1",
