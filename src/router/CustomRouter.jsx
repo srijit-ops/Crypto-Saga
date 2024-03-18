@@ -6,7 +6,8 @@ const Layout = lazy(() => import("../layout/Layout"));
 
 const CoinDetails = lazy(() => import("../pages/coindetails/CoinDetails"));
 
-const LivePrice = lazy(() => import("../pages/liveprice/LivePrice"));
+const LivePrice= lazy(()=>import("../pages/liveprice/LivePrice"))
+
 
 const routeData = [
   {
@@ -22,13 +23,13 @@ const routeData = [
 ];
 
 function CustomRouter() {
+
   return (
     <BrowserRouter>
       <Routes>
         {routeData.map((route, index) => {
           const Layout = route.layout;
           const Component = route.component;
-
           return (
             <Route
               path={route.path}

@@ -1,14 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { serialize } from '../../utils/paramsAppenderFunc'
 import Loader from '../../components/common/Loader'
-import { useTrendingCoins } from '../../hooks/coindetailhook.hooks'
+import { useTrendingCoins, useSimplePrice } from '../../hooks/coindetailhook.hooks'
+import { useLivePrice } from '../../hooks/livepricehook.hooks'
+import { useLocation } from 'react-router-dom'
+
 
 function CoinDetails() {
 
-  const {data, isLoading}= useTrendingCoins()
+  const location= useLocation()
+  const {coinSymbol, coinId}= location.state || {}
+
+  const [statQuery, setStatQuery] = useState(
+    {
+      vs_currency:"usd",
+      ids: coinId,
+      order:"market_cap_desc",
+      per_page:1,
+      page:1,
+      sparkline:true,
+      price_change_percentage:['1h', '24h', '7d'],
+      locale:"en"
+    }
+  )
+  
+  const [priceQuery, setPriceQuery]= useState({
+    ids:coinId,
+    vs_currencies: ['inr', 'usd'],
+    include_market_cap:true,
+    include_24hr_change:true
+  })
+
+  // const {data: priceData, isLoading: priceLoading, error: priceError}= useSimplePrice(serialize(priceQuery))
+
+  // const {data: statData, isLoading: statLoading, error: statError}= useLivePrice(serialize(statQuery))
+
+  // const {data: trendingData, isLoading: trendingLoading, error: trendingError}= useTrendingCoins()
+
+// console.log(trendingData, "trending data")
+// console.log(statData, "stat data")
+// console.log(priceData, "price data")
+
   return (
-    isLoading ? <Loader/> :
-    <div>heyy</div>
+    // (priceLoading || statLoading || trendingLoading) ?
+    // <Loader/> :
+    <>
+    <h1>hyeeyey</h1>
+ 
+    </>
     )
 }
     // <div>

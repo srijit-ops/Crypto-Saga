@@ -3,13 +3,6 @@
 
 import { rootAxios } from "../utils/axios";
 
-export const getLivePrice= async (query)=>{
-    try{
-        const response= await rootAxios.get(`/coins/markets?${query}`)
-        console.log(response, "live price data")
-        return response.data
-    }
-  catch(e){
-    console.log(e,"error in live")
-  }
-}
+export const getLivePrice= (query)=> rootAxios.get(`/coins/markets?${query}`)
+
+    
