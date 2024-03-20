@@ -54,7 +54,7 @@ function FundamentalList() {
                      <div>
                      <p className='text-lg font-semibold text-gray-700 mb-4'>Fundamentals</p>
                  {
-                     data.slice(0,5).map((item, index)=>{
+                     data.slice(0,4).map((item, index)=>{
                          return(
                              <div key={index} className="flex flex-row justify-between items-center gap-4 border-b border-gray-300 last:border-b-0 last:pb-0 py-4">
                                  <p className="text-sm text-gray-500">{item.label}</p>
