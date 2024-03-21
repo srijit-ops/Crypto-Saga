@@ -3,7 +3,7 @@ import { getCoinPrice, getTrendingCoins } from "../requests/coindetails.requests
 
 export const useSimplePrice= (query)=>{
     return useQuery({
-        queryKey:["simpleprice"],
+        queryKey:["simpleprice", query],
         queryFn: async ()=>{
             const response= await getCoinPrice(query)
             console.log(response.data)

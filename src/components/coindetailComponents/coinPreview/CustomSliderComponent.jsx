@@ -8,20 +8,20 @@ export default function CustomeSliderComponent({ max, min, current, leftLabel, r
       }, [current]);
 
   return (
-    <div className='overflow-y-hidden py-4 relative flex justify-between items-center gap-4'>
+    <div className='overflow-y-hidden overflow-x-hidden py-4 relative flex justify-between items-center gap-4'>
       <div className='shrink-0'>
         <p className='text-sm text-gray-500'>{leftLabel}</p>
-        <p className='text-gray-950 font-semibold'>${min}</p>
+        <p className='text-gray-950 font-semibold sm:text-sm md:text-base text-sm'>${min}</p>
       </div>
       <div className= {`absolute flex justify-between z-[1000] flex-col items-center top-[45%]`} style={{left: `${currentPercentage}%`}}>
           <p className='rotate-90'>&#10094;</p>
-          <p className='text-gray-950 font-semibold'>${current}</p>
+          <p className='text-gray-950 font-semibold sm:text-sm md:text-base text-sm'>${current}</p>
         </div>
       <div className='w-full relative rounded-lg h-3 bg-gradient-to-r from-red-500 via-yellow-400 to-green-500'>
       </div>
       <div className='shrink-0'>
         <p className='text-sm text-gray-500'>{rightLabel}</p>
-        <p className='text-gray-950 font-semibold'>${max}</p>
+        <p className='text-gray-950 font-semibold sm:text-sm md:text-base text-sm'>${max}</p>
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import PriceChartComponent from "./PriceChartComponent";
 
-function BasicInfo({priceChange=-3.5467}) {
+function BasicInfo({inr, usd, rate, name, symbol, logo, rank}) {
   const [range, setRange] = useState("YTD");
 
   const chartTime = [
@@ -41,37 +41,37 @@ function BasicInfo({priceChange=-3.5467}) {
 
   return (
     <div className="p-6 bg-white rounded-lg my-4">
-      <div className="flex flex-row justify-start items-center gap-8">
-        <div className="flex flex-row justify-start items-center gap-1.5">
+      <div className="flex flex-row flex-wrap justify-start items-center gap-8">
+        <div className="flex flex-row justify-start items-center gap-1.5 w-fit">
           <img
-            src="https:upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png"
+            src={logo}
             alt="Bitcoin"
             className="h-9 w-9"
           />
-          <h4 className="font-semibold text-gray-950">Bitcoin</h4>
-          <p className="text-gray-500">BTC</p>
+          <h4 className="font-semibold text-gray-950 sm:text-base text-base">{name}</h4>
+          <p className="text-gray-500 sm:text-base text-base">{symbol}</p>
         </div>
-        <div className="py-1.5 px-2.5 bg-slate-400 rounded-lg">
-          <p className="text-white">Rank 1</p>
+        <div className="py-1.5 px-2.5 bg-slate-400 rounded-lg w-fit">
+          <p className="text-white sm:text-sm md:text-base text-sm">Rank {rank}</p>
         </div>
       </div>
-      <div className="flex flex-row justify-start items-start gap-6 mt-10 mb-6">
-        <div>
-          <h4 className="text-3xl text-gray-950 font-semibold overflow-y-hidden mb-2">$ 646464646</h4>
-          <p className="font-medium text-gray-950">Rs. 525252522</p>
+      <div className="flex flex-row justify-start items-start gap-6 mt-6 sm:mt-7 md:mt-10 mb-6 flex-wrap">
+        <div className="w-fit">
+          <h4 className="text-lg sm:text-lg md:text-xl lg:text-3xl text-gray-950 font-semibold overflow-y-hidden mb-2">$ {usd}</h4>
+          <p className="font-medium text-gray-950 sm:text-sm text-base md:text-base">Rs. {inr}</p>
         </div>
-        <div className="flex flex-row justify-start items-center gap-2">
-          <div className={`flex flex-row justify-start items-center gap-1 rounded-lg ${priceChange>0? 'bg-green-200': 'bg-red-200'} py-1.5 px-2.5`}>
-          <i className= {`fa-solid fa-caret-${priceChange>0?'up':'down'} mr-2 ${priceChange>0? 'text-green-500' :'text-red-600'}`}></i>
-            <p className={`text-sm ${priceChange>0? 'text-green-600' :'text-red-700'}`}>{priceChange} %</p>
+        <div className="flex flex-row justify-start items-center gap-2 w-fit">
+          <div className={`flex flex-row justify-start items-center gap-1 rounded-lg ${rate>0? 'bg-green-200': 'bg-red-200'} py-1.5 px-2.5`}>
+          <i className= {`fa-solid fa-caret-${rate>0?'up':'down'} mr-2 ${rate>0? 'text-green-500' :'text-red-600'}`}></i>
+            <p className={`text-sm ${rate>0? 'text-green-600' :'text-red-700'}`}>{rate.toFixed(2)} %</p>
           </div>
           <p className="text-gray-500 text-sm">(24 H)</p>
         </div>
       </div>
 
-      <div className="flex flex-row justify-between items-center gap-4 my-6 pt-4 border-t border-gray-300">
-        <p className="font-semibold text-gray-950">Bitcoin price chart (USD)</p>
-        <div className="flex flex-row justify-between items-center gap-1">
+      <div className="flex flex-row flex-wrap justify-between items-center gap-4 my-6 pt-4 border-t border-gray-300">
+        <p className="font-semibold text-gray-950 w-fit">{name} price chart (USD)</p>
+        <div className="flex flex-row justify-between items-center gap-1 w-fit">
           {chartTime.map((data, index) => {
             return (
               <button

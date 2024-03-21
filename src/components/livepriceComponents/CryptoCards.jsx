@@ -31,8 +31,8 @@ function CryptoCards({name, price, oneHr, oneWeek, oneDay, supply, marketCap, sy
         <i className={`fa-solid fa-caret-${oneWeek>0?'up':'down'} mr-2 sm:text-sm lg:text-base text-xs ${oneWeek>0? 'text-green-500' :'text-red-600'}`}></i>
         <p className={`text-sm ${oneWeek>0? 'text-green-500' :'text-red-600'}`}>{`${oneWeek?.toFixed(2)} %`}</p>
         </div>
-        <p className='sm:text-sm lg:text-base text-xs sm:block hidden'>{`$ ${marketCap?.toFixed(2)}`}</p>
-        <p className='sm:text-sm lg:text-base text-xs sm:block hidden'>{supply?.toFixed(2)}<span className='ml-1'>{symbol}</span></p>
+        <p className='sm:text-sm lg:text-base text-xs lg:block hidden'>{`$ ${marketCap?.toFixed(2)}`}</p>
+        <p className='sm:text-sm lg:text-base text-xs lg:block hidden'>{supply?.toFixed(2)}<span className='ml-1'>{symbol}</span></p>
     </div>
   )
 }

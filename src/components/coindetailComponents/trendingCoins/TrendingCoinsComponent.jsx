@@ -5,42 +5,58 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 // import './styles.css';
 
 // import required modules
-import {Navigation } from 'swiper/modules';
+import {Navigation, Pagination } from 'swiper/modules';
 import TrendingCard from './TrendingCard';
 
-export default function TrendingCoinsComponent() {
+export default function TrendingCoinsComponent({coins}) {
+  console.log(coins, "heere")
   return (
     <div className='my-3'>
       <p className='text-lg font-semibold text-gray-700 mb-4'>Trending Coins</p>
       <Swiper
-        slidesPerView={5}
+        slidesPerView={2}
+        breakpoints={{
+          // When screen width is 640px or more
+          640: {
+            slidesPerView: 3,
+          },
+          // When screen width is 768px or more
+          768: {
+            slidesPerView: 3,
+          },
+          // When screen width is 1024px or more
+          1024: {
+            slidesPerView: 4,
+          },
+          // When screen width is 1280px or more
+          1280: {
+            slidesPerView: 5,
+          },
+          // When screen width is 1536px or more
+          1536: {
+            slidesPerView: 5,
+          },
+        }}
         spaceBetween={30}
         navigation={true}
-        modules={[Navigation]}
+        pagination={false}
+        modules={[Navigation, Pagination]}
         className="mySwiper"
       >
         {
-        [1,2,3,4,5,6,7,8,9,10].map((item, index)=>{
+        coins.map((item, index)=>{
           return(
-            <SwiperSlide>
-              <TrendingCard/>
+            <SwiperSlide key={index}>
+              <TrendingCard id={item.item.id} symbol={item.item.symbol} name={item.item.name} logo={item.item.small} price={item.item.data.price} sparkline={item.item.data.sparkline} rate={item.item.data.price_change_percentage_24h.usd}/>
             </SwiperSlide>
           )
         })
         }
-        {/* <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide> */}
       </Swiper>
     </div>
   );

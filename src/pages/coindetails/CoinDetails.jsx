@@ -32,30 +32,30 @@ function CoinDetails() {
     include_24hr_change: true,
   });
 
-  // const {data: priceData, isLoading: priceLoading, error: priceError}= useSimplePrice(serialize(priceQuery))
+  const {data: priceData, isLoading: priceLoading, error: priceError}= useSimplePrice(serialize(priceQuery))
 
-  // const {data: statData, isLoading: statLoading, error: statError}= useLivePrice(serialize(statQuery))
+  const {data: statData, isLoading: statLoading, error: statError}= useLivePrice(serialize(statQuery))
 
-  // const {data: trendingData, isLoading: trendingLoading, error: trendingError}= useTrendingCoins()
+  const {data: trendingData, isLoading: trendingLoading, error: trendingError}= useTrendingCoins()
 
-  // console.log(trendingData, "trending data")
-  // console.log(statData, "stat data")
-  // console.log(priceData, "price data")
+  console.log(trendingData, "trending data")
+  console.log(statData, "stat data")
+  console.log(priceData?.coinId, "price data")
 
   return (
-    // (priceLoading || statLoading || trendingLoading) ?
-    // <Loader/> :
+    (priceLoading || statLoading || trendingLoading) ?
+    <Loader/> :
     <div className="bg-gray-100 lg:px-8 sm:px-5 px-4 py-6">
       <div className="flex flex-row justify-start items-center gap-2">
-        <p className="text-gray-500">Cryptocurrencies</p>
-        <i className="fa-solid fa-greater-than text-gray-400"></i>
-        <p className="text-gray-950">Bitcoin</p>
+        <p className="text-gray-500 text-sm sm:text-base">Cryptocurrencies</p>
+        <i className="fa-solid fa-greater-than text-gray-400 text-sm sm:text-base"></i>
+        <p className="text-gray-950 font-semibold text-sm sm:text-base">{statData[0].name}</p>
       </div>
       <div>
-        <CoinPreviewComponent/>
+        <CoinPreviewComponent priceDetail={priceData[coinId]} statDetail={statData[0]}/>
       </div>
       <div>
-        <TrendingCoinsComponent/>
+        <TrendingCoinsComponent coins={trendingData.coins}/>
       </div>
     </div>
   );

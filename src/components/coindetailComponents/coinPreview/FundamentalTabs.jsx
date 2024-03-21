@@ -5,16 +5,16 @@ function FundamentalTabs() {
 
   const data=[
     {
-        label: "Bitcoin price",
-        value: "$16134"
+        label: "Market Cap",
+        value: "$161346363636"
     },
     {
         label: "24h low/high",
-        value: "$16,382.07 / $16,874.12"
+        value: "$16,382.075363 / $16,874.12636"
     },
     {
-        label: "7D low/high",
-        value: "$16,382.07 / $16,874.12"
+        label: "All time low/ high",
+        value: "$16,382.073636 / $16,874.12737"
     }
 ]
 
@@ -23,7 +23,7 @@ function FundamentalTabs() {
       {
         data.map((item, index)=>{
           return(
-            <div key={index} className='w-full'>
+            <div key={index} className='lg:basis-full sm:basis-5/12 basis-full'>
               <FundamentalCard label={item.label} value={item.value} index={index}/>
             </div>
           )
