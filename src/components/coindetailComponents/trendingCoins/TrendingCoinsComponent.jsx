@@ -1,23 +1,23 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // import './styles.css';
 
 // import required modules
-import {Navigation, Pagination } from 'swiper/modules';
-import TrendingCard from './TrendingCard';
+import { Navigation, Pagination } from "swiper/modules";
+import TrendingCard from "./TrendingCard";
 
-export default function TrendingCoinsComponent({coins}) {
-  console.log(coins, "heere")
+export default function TrendingCoinsComponent({ coins }) {
+  console.log(coins, "heere");
   return (
-    <div className='my-3'>
-      <p className='text-lg font-semibold text-gray-700 mb-4'>Trending Coins</p>
+    <div className="my-3">
+      <p className="text-lg font-semibold text-gray-700 mb-4">Trending Coins</p>
       <Swiper
         slidesPerView={2}
         breakpoints={{
@@ -48,21 +48,25 @@ export default function TrendingCoinsComponent({coins}) {
         modules={[Navigation, Pagination]}
         className="mySwiper"
       >
-        {
-        coins.map((item, index)=>{
-          return(
+        {coins.map((item, index) => {
+          return (
             <SwiperSlide key={index}>
-              <TrendingCard id={item.item.id} symbol={item.item.symbol} name={item.item.name} logo={item.item.small} price={item.item.data.price} sparkline={item.item.data.sparkline} rate={item.item.data.price_change_percentage_24h.usd}/>
+              <TrendingCard
+                id={item.item.id}
+                symbol={item.item.symbol}
+                name={item.item.name}
+                logo={item.item.small}
+                price={item.item.data.price}
+                sparkline={item.item.data.sparkline}
+                rate={item.item.data.price_change_percentage_24h.usd}
+              />
             </SwiperSlide>
-          )
-        })
-        }
+          );
+        })}
       </Swiper>
     </div>
   );
 }
-
-
 
 // import React from 'react'
 

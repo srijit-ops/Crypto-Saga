@@ -32,124 +32,52 @@ function CoinDetails() {
     include_24hr_change: true,
   });
 
-  const {data: priceData, isLoading: priceLoading, error: priceError}= useSimplePrice(serialize(priceQuery))
+  const {
+    data: priceData,
+    isLoading: priceLoading,
+    error: priceError,
+  } = useSimplePrice(serialize(priceQuery));
 
-  const {data: statData, isLoading: statLoading, error: statError}= useLivePrice(serialize(statQuery))
+  const {
+    data: statData,
+    isLoading: statLoading,
+    error: statError,
+  } = useLivePrice(serialize(statQuery));
 
-  const {data: trendingData, isLoading: trendingLoading, error: trendingError}= useTrendingCoins()
+  const {
+    data: trendingData,
+    isLoading: trendingLoading,
+    error: trendingError,
+  } = useTrendingCoins();
 
-  console.log(trendingData, "trending data")
-  console.log(statData, "stat data")
-  console.log(priceData?.coinId, "price data")
+  console.log(trendingData, "trending data");
+  console.log(statData, "stat data");
+  console.log(priceData?.coinId, "price data");
 
-  return (
-    (priceLoading || statLoading || trendingLoading) ?
-    <Loader/> :
+  return priceLoading || statLoading || trendingLoading ? (
+    <Loader />
+  ) : priceError || statError || trendingError ? (
+    <p>error</p>
+  ) : (
     <div className="bg-gray-100 lg:px-8 sm:px-5 px-4 py-6">
       <div className="flex flex-row justify-start items-center gap-2">
         <p className="text-gray-500 text-sm sm:text-base">Cryptocurrencies</p>
         <i className="fa-solid fa-greater-than text-gray-400 text-sm sm:text-base"></i>
-        <p className="text-gray-950 font-semibold text-sm sm:text-base">{statData[0].name}</p>
+        <p className="text-gray-950 font-semibold text-sm sm:text-base">
+          {statData[0].name}
+        </p>
       </div>
       <div>
-        <CoinPreviewComponent priceDetail={priceData[coinId]} statDetail={statData[0]}/>
+        <CoinPreviewComponent
+          priceDetail={priceData[coinId]}
+          statDetail={statData[0]}
+        />
       </div>
       <div>
-        <TrendingCoinsComponent coins={trendingData.coins}/>
+        <TrendingCoinsComponent coins={trendingData.coins} />
       </div>
     </div>
   );
 }
-// <div>
-{
-  /* het */
-}
-{
-  /* <div css={container}>
-
-
-
-<div css={widgets_holder}>
-  <div css={parent_widget1}>
-    <Overview/>
-    <Performance/> */
-}
-{
-  /* <Sentiment/> */
-}
-{
-  /* </div>
-  <div css={parent_widget2}>
-    <KoinxAd/>
-    <TrendingCoins trendingCoins={trendingCoins}/>
-  </div>
-  <div css={parent_widget3}>
-    <Recommendation trendingCoins={trendingCoins}/>
-  </div>
-</div>
-</div> */
-}
-// </div>
 
 export default CoinDetails;
-
-//css
-
-// const container = css`
-// padding: 1rem 3.6rem ;
-// @media screen and (max-width: 900px) {
-//   padding: 1.4rem 0.9rem;
-// }
-// `
-
-// const coin_name_holder = css`
-//   display: flex;
-//   justify-content: flex-start;
-//   gap: 0.4rem;
-//   align-items: center;
-//   flex-direction: row;
-// `
-
-// const coin_name_head = css`
-//   font-size: 0.9rem;
-//   color: ${theme.fonts.light_grey};
-//   font-weight: 400;
-// `
-// const coin_name = css`
-//   font-size: 0.9rem;
-//   color: ${theme.primary_color};
-//   font-weight: 500;
-// `
-// const widgets_holder = css`
-//   display: flex;
-//   justify-content: space-between;
-//   gap: 0.3rem;
-//   align-items: flex-start;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//   margin-top: 1.2rem;
-// `
-// const parent_widget1 = css`
-//   width: 65%;
-// order: 1;
-//   @media screen and (max-width: 900px) {
-//         width: 100%;
-//     }
-// `
-// const parent_widget2 = css`
-//   width: 28%;
-// order: 2;
-//   @media screen and (max-width: 900px) {
-//         width: 100%;
-//         order: 3;
-//     }
-// `
-// const parent_widget3 = css`
-// overflow-x: auto;
-//   width: 100%;
-// order: 3;
-//   @media screen and (max-width: 900px) {
-//         width: 100%;
-//         order: 2;
-//     }
-// `

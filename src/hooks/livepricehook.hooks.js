@@ -10,7 +10,7 @@ export const useLivePrice= (query)=>{
                 console.log(response, "res from live price")
                 return response.data
             },
-            staleTime:60000
+            // staleTime:60000
         }
     )
 }

@@ -9,7 +9,7 @@ export const useSimplePrice= (query)=>{
             console.log(response.data)
             return response.data
         },
-        staleTime:60000
+        // staleTime:60000
     })
 }
 
@@ -21,6 +21,6 @@ export const useTrendingCoins= ()=>{
             console.log(response.data)
             return response.data
         },
-        staleTime:60000
+        // staleTime:60000
     })
 }

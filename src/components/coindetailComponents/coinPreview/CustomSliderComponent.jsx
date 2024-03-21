@@ -1,30 +1,42 @@
-import { useState, React, useMemo } from 'react'
+import { useState, React, useMemo } from "react";
 
-
-export default function CustomeSliderComponent({ max, min, current, leftLabel, rightLabel }) {
-
-     const currentPercentage = useMemo(() => {
-        return ((current - min) / (max - min)) * 100;
-      }, [current]);
+export default function CustomeSliderComponent({
+  max,
+  min,
+  current,
+  leftLabel,
+  rightLabel,
+}) {
+  const currentPercentage = useMemo(() => {
+    return ((current - min) / (max - min)) * 100;
+  }, [current]);
 
   return (
-    <div className='overflow-y-hidden overflow-x-hidden py-4 relative flex justify-between items-center gap-4'>
-      <div className='shrink-0'>
-        <p className='text-sm text-gray-500'>{leftLabel}</p>
-        <p className='text-gray-950 font-semibold sm:text-sm md:text-base text-sm'>${min}</p>
+    <div className="overflow-y-hidden overflow-x-hidden py-4 relative flex justify-between items-center gap-4">
+      <div className="shrink-0">
+        <p className="text-sm text-gray-500">{leftLabel}</p>
+        <p className="text-gray-950 font-semibold sm:text-sm md:text-base text-sm">
+          ${min?.toFixed(2)}
+        </p>
       </div>
-      <div className= {`absolute flex justify-between z-[1000] flex-col items-center top-[45%]`} style={{left: `${currentPercentage}%`}}>
-          <p className='rotate-90'>&#10094;</p>
-          <p className='text-gray-950 font-semibold sm:text-sm md:text-base text-sm'>${current}</p>
-        </div>
-      <div className='w-full relative rounded-lg h-3 bg-gradient-to-r from-red-500 via-yellow-400 to-green-500'>
+      <div
+        className={`absolute flex justify-between z-[1000] flex-col items-center top-[45%]`}
+        style={{ left: `${currentPercentage}%` }}
+      >
+        <p className="rotate-90">&#10094;</p>
+        <p className="text-gray-950 font-semibold sm:text-sm md:text-base text-sm">
+          ${current?.toFixed(2)}
+        </p>
       </div>
-      <div className='shrink-0'>
-        <p className='text-sm text-gray-500'>{rightLabel}</p>
-        <p className='text-gray-950 font-semibold sm:text-sm md:text-base text-sm'>${max}</p>
+      <div className="w-full relative rounded-lg h-3 bg-gradient-to-r from-red-500 via-yellow-400 to-green-500"></div>
+      <div className="shrink-0">
+        <p className="text-sm text-gray-500">{rightLabel}</p>
+        <p className="text-gray-950 font-semibold sm:text-sm md:text-base text-sm">
+          ${max?.toFixed(2)}
+        </p>
       </div>
     </div>
-  )
+  );
 }
 
 //css

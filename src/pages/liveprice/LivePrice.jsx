@@ -51,16 +51,14 @@ function LivePrice() {
 
   return isLoading ? (
     <Loader />
+  ) : error ? (
+    <p>error</p>
   ) : (
     <div className="bg-gray-100 lg:px-8 sm:px-5 px-4 py-6">
       <div className="flex flex-row justify-start items-center">
         <h3 className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-semibold text-stone-950 mb-25 overflow-y-hidden">
           Cryptocurrency Live Prices
         </h3>
-        {/* <div className='flex w-10 h-10'>
-      <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_vnikrcia.json"
-                    background="transparent" speed="1" loop autoplay></lottie-player>
-      </div> */}
       </div>
       <div className="lg:mt-10 sm:mt-7 mt-5 mb-7">
         <div className="flex flex-row justify-between items-center px-4 py-3 border-b border-gray-300">
@@ -71,7 +69,9 @@ function LivePrice() {
                 className={`font-medium text-gray-500 text-center sm:text-sm lg:text-base text-sm ${
                   item.id === 1 || item.id === 2 || item.id === 3
                     ? "block"
-                    : item.id === 6 || item.id === 7 ? "lg:block hidden" :"sm:block hidden"
+                    : item.id === 6 || item.id === 7
+                    ? "lg:block hidden"
+                    : "sm:block hidden"
                 }`}
               >
                 {item.name}
