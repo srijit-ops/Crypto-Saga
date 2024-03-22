@@ -6,13 +6,13 @@ import {
   useSimplePrice,
 } from "../../hooks/coindetailhook.hooks";
 import { useLivePrice } from "../../hooks/livepricehook.hooks";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CoinPreviewComponent from "../../components/coindetailComponents/coinPreview/CoinPreviewComponent";
 import TrendingCoinsComponent from "../../components/coindetailComponents/trendingCoins/TrendingCoinsComponent";
 
 function CoinDetails() {
-  const location = useLocation();
-  const { coinSymbol, coinId } = location.state || {};
+  const { id: coinId } = useParams(); //useparams will return an object from the route which is {id:'btc'}
+  // console.log(coinId, "nav check")
 
   const [statQuery, setStatQuery] = useState({
     vs_currency: "usd",
@@ -32,6 +32,8 @@ function CoinDetails() {
     include_24hr_change: true,
   });
 
+  // console.log(priceQuery, statQuery, "query check")
+
   const {
     data: priceData,
     isLoading: priceLoading,
@@ -50,9 +52,9 @@ function CoinDetails() {
     error: trendingError,
   } = useTrendingCoins();
 
-  console.log(trendingData, "trending data");
-  console.log(statData, "stat data");
-  console.log(priceData?.coinId, "price data");
+  // console.log(trendingData, "trending data");
+  // console.log(statData, "stat data");
+  // console.log(priceData, "price data");
 
   return priceLoading || statLoading || trendingLoading ? (
     <Loader />
@@ -74,7 +76,13 @@ function CoinDetails() {
         />
       </div>
       <div>
-        <TrendingCoinsComponent coins={trendingData.coins} />
+        <TrendingCoinsComponent
+          coins={trendingData.coins}
+          statQuery={statQuery}
+          setStatQuery={setStatQuery}
+          priceQuery={priceQuery}
+          setPriceQuery={setPriceQuery}
+        />
       </div>
     </div>
   );

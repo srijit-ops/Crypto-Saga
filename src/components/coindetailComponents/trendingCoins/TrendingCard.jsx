@@ -1,12 +1,25 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function TrendingCard({ id, symbol, sparkline, price, name, rate, logo }) {
+function TrendingCard({
+  id,
+  symbol,
+  sparkline,
+  price,
+  name,
+  rate,
+  logo,
+  setStatQuery,
+  setPriceQuery,
+  priceQuery,
+  statQuery,
+}) {
   const navigation = useNavigate();
 
   const clickHandler = () => {
-    navigation("/coindetails", { state: { coinSymbol: symbol, coinId: id } });
-    window.location.reload(); //have to see more using react query, without this line, the usequery hooks of coindetails page didnt run again , so i was not geting the new data
+    navigation(`/coindetails/${id}`);
+    setStatQuery({ ...statQuery, ids: id });
+    setPriceQuery({ ...priceQuery, ids: id });
   };
 
   return (

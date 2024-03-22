@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CryptoCards({
   name,
@@ -16,7 +16,7 @@ function CryptoCards({
   const navigation = useNavigate();
 
   const handleClick = () => {
-    navigation("/coindetails", { state: { coinSymbol: symbol, coinId: id } });
+    navigation(`/coindetails/${id}`);
   };
 
   return (

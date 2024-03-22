@@ -16,7 +16,7 @@ const routeData = [
     layout: Layout,
   },
   {
-    path: "/coindetails",
+    path: "/coindetails/:id",
     component: CoinDetails,
     layout: Layout,
   },

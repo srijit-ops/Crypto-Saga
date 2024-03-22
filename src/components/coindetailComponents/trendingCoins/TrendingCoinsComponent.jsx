@@ -7,13 +7,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-// import './styles.css';
-
 // import required modules
 import { Navigation, Pagination } from "swiper/modules";
 import TrendingCard from "./TrendingCard";
 
-export default function TrendingCoinsComponent({ coins }) {
+export default function TrendingCoinsComponent({
+  coins,
+  setStatQuery,
+  setPriceQuery,
+  priceQuery,
+  statQuery,
+}) {
   console.log(coins, "heere");
   return (
     <div className="my-3">
@@ -59,6 +63,10 @@ export default function TrendingCoinsComponent({ coins }) {
                 price={item.item.data.price}
                 sparkline={item.item.data.sparkline}
                 rate={item.item.data.price_change_percentage_24h.usd}
+                setStatQuery={setStatQuery}
+                setPriceQuery={setPriceQuery}
+                priceQuery={priceQuery}
+                statQuery={statQuery}
               />
             </SwiperSlide>
           );
@@ -67,15 +75,3 @@ export default function TrendingCoinsComponent({ coins }) {
     </div>
   );
 }
-
-// import React from 'react'
-
-// function TrendingCoinsComponent() {
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }
-
-// export default TrendingCoinsComponent
