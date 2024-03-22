@@ -1,0 +1,1 @@
+### Crypto Saga is a comprehensive platform designed for exploring real-time data and insights on various cryptocurrencies. Users can delve into live price updates, market cap, market rank, valuations, performance metrics, and a plethora of other details presented in an intuitive graphical interface. ###

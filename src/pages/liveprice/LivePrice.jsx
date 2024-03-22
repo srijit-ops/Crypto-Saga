@@ -3,6 +3,7 @@ import { useLivePrice } from "../../hooks/livepricehook.hooks";
 import { serialize } from "../../utils/paramsAppenderFunc";
 import Loader from "../../components/common/Loader";
 import CryptoCards from "../../components/livepriceComponents/CryptoCards";
+import Error from "../../components/common/Error";
 
 const labels = [
   {
@@ -52,7 +53,7 @@ function LivePrice() {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <p>error</p>
+    <Error />
   ) : (
     <div className="bg-gray-100 lg:px-8 sm:px-5 px-4 py-6">
       <div className="flex flex-row justify-start items-center">

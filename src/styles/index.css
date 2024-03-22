@@ -39,6 +39,7 @@ h4{
   display: flex;
   justify-content: center;
   align-items: center;
+  height: auto!important;
 }
 .mySwiper .swiper-wrapper{
   padding-top: 1.5rem;

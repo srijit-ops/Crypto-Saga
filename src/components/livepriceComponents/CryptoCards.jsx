@@ -21,7 +21,7 @@ function CryptoCards({
 
   return (
     <div
-      className="flex flex-row justify-between items-center bg-white mt-5 rounded-lg px-4 py-3 shadow cursor-pointer"
+      className="flex flex-row justify-between items-center bg-white mt-5 rounded-lg px-4 py-3 shadow hover:shadow-md cursor-pointer"
       onClick={handleClick}
     >
       <div className="flex flex-row justify-between items-center">

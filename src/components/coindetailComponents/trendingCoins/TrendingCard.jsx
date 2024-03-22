@@ -20,11 +20,12 @@ function TrendingCard({
     navigation(`/coindetails/${id}`);
     setStatQuery({ ...statQuery, ids: id });
     setPriceQuery({ ...priceQuery, ids: id });
+    window.scrollTo(0, 0);
   };
 
   return (
     <div
-      className="relative rounded-xl z-[1] p-4 cursor-pointer shadow"
+      className="relative rounded-xl z-[1] p-4 cursor-pointer shadow hover:shadow-xl h-full"
       onClick={clickHandler}
     >
       <div className="absolute z-[1000] -top-4 w-[90%] flex justify-center">

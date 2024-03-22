@@ -96,7 +96,7 @@ function BasicInfo({ inr, usd, rate, name, symbol, logo, rank }) {
             return (
               <button
                 key={index}
-                className="text-gray-600 focus:text-sky-700 text-xs rounded-3xl p-1.5 bg-white focus:bg-sky-100"
+                className="text-gray-600 focus:text-sky-700 text-xs rounded-3xl p-1.5 bg-white focus:bg-sky-100 hover:bg-sky-100"
                 onClick={() => setRange(data?.value)}
               >
                 {data?.name}

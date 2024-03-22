@@ -9,6 +9,7 @@ import { useLivePrice } from "../../hooks/livepricehook.hooks";
 import { useParams } from "react-router-dom";
 import CoinPreviewComponent from "../../components/coindetailComponents/coinPreview/CoinPreviewComponent";
 import TrendingCoinsComponent from "../../components/coindetailComponents/trendingCoins/TrendingCoinsComponent";
+import Error from "../../components/common/Error";
 
 function CoinDetails() {
   const { id: coinId } = useParams(); //useparams will return an object from the route which is {id:'btc'}
@@ -59,7 +60,7 @@ function CoinDetails() {
   return priceLoading || statLoading || trendingLoading ? (
     <Loader />
   ) : priceError || statError || trendingError ? (
-    <p>error</p>
+    <Error />
   ) : (
     <div className="bg-gray-100 lg:px-8 sm:px-5 px-4 py-6">
       <div className="flex flex-row justify-start items-center gap-2">
